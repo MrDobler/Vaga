@@ -23,18 +23,15 @@ class ClinicaController extends Controller
     public function createClinica(Request $req)
     {
         $clinica = Clinica::create($req->all());
-        return response()->json($clinica);
     }
 
     public function updateClinica(Request $req)
     {
         Clinica::find($req->id)->update($req->all());
-        return Clinica::all();
     }
     
     public function deleteClinica(Request $req)
     {
         Clinica::find($req->id)->delete();
-        return response()->json();
     }
 }

@@ -18,6 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/planos', 'HomeController@planos')->name('planos');
+Route::get('/clinicas', 'HomeController@clinicas')->name('clinicas');
 
 Route::get('getAll', 'PlanoDeSaudeController@getAll');
 Route::get('getPlano/{id}', 'PlanoDeSaudeController@getPlano');

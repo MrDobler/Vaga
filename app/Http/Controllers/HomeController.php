@@ -32,4 +32,16 @@ class HomeController extends Controller
                 ->with('planos', $planos)
                 ->with('clinicas', $clinicas);
     }
+
+    public function planos()
+    {
+        $planos = PlanoDeSaude::all();
+        return view('planos')->with('planos', $planos);
+    }
+
+    public function clinicas()
+    {
+        $clinicas = Clinica::all();
+        return view('clinicas')->with('clinicas', $clinicas);
+    }
 }

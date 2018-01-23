@@ -29,8 +29,17 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        {{ config('app.name', 'Vaga') }}
                     </a>
+                    <ul class="nav navbar-nav">
+                        <li><a href="{{url('/home')}}">Home</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav">
+                        <li><a href="{{url('/planos')}}">Planos</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav">
+                        <li><a href="{{url('/clinicas')}}">Clínicas</a></li>
+                    </ul>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
