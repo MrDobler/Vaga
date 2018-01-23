@@ -28,10 +28,8 @@ class HomeController extends Controller
     {  
         $planos = PlanoDeSaude::all();
         $clinicas = Clinica::all();
-        $user = User::all(); 
         return view('home')
                 ->with('planos', $planos)
-                ->with('clinicas', $clinicas)
-                ->with('user', $user);
+                ->with('clinicas', $clinicas);
     }
 }

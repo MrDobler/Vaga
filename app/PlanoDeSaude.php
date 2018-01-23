@@ -13,4 +13,9 @@ class PlanoDeSaude extends Model
     protected $fillable = [
         'id','nome', 'logo', 'status'
     ];
+
+    public function clinicas()
+    {
+        return $this->belongsToMany('Vaga\Clinica', 'plano_clinica', 'id', 'id');
+    }
 }

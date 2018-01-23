@@ -18,4 +18,9 @@ class Clinica extends Model
     {
         return $this->hasMany('Vaga\User');
     }
+
+    public function planos()
+    {
+        return $this->belongsToMany('Vaga\PlanoDeSaude', 'plano_clinica', 'id', 'id');
+    }
 }
