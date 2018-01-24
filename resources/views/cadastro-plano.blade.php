@@ -10,7 +10,10 @@
     </div>
     <div class="form-group">
         <label>Status</label>
-        <input type="text" class="form-control" name="status">
+        <select name="status">
+            <option value="1">ATIVO</option>
+            <option value="0">INATIVO</option>
+        </select>
     </div>
     <div class="modal-footer">
         <button class="btn btn-primary" onclick="createPlano()" type="button">Cadastrar</button>

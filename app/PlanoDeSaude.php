@@ -11,11 +11,11 @@ class PlanoDeSaude extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'id','nome', 'logo', 'status'
+        'id','nome', 'logo', 'status', 'clinica_id'
     ];
 
     public function clinicas()
     {
-        return $this->belongsToMany('Vaga\Clinica', 'plano_clinica', 'id', 'id');
+        return $this->belongsToMany(Clinica::class, 'plano_clinica');
     }
 }

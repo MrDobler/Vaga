@@ -49,8 +49,37 @@ function deleteClinica(id) {
         .catch(() => alert('Erro'));
 }
 
-function getTabelaClinicas() {
-    $("#btn-lista-clinicas").ready(() => {
-        $('#tabela').load("/resources/views/tabela-clinicas.blade.php")
-    });
+function createPlanoClinica() {
+    var values = document.querySelector('#create-plano-clinica');
+    var form = new FormData(values);
+    fetch('/createPlanosEmClinicas', {
+        method: 'post',
+        body: form
+    })
+        .then(() => window.location.reload())
+        .catch(() => alert('Erro'));
+}
+
+$('#modalEditarPlano').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget);
+    var recipient = button.data('id');
+    var modal = $(this);
+    modal.find('#status').val(recipient);
+});
+
+function getPlano() {
+    let init = {
+        method: 'get'
+    };
+    var id = document.querySelector('#status').value;
+    fetch('/getPlano/' + id, init)
+        .then((response) => {
+           alert(response.json());
+        }) 
+        .catch(() => alert('Erro'));
+}
+
+
+function updatePlanoClinica() {
+
 }

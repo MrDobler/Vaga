@@ -33,3 +33,6 @@ Route::post('createClinica', 'ClinicaController@createClinica');
 Route::put('updateClinica/{id}', 'ClinicaController@updateClinica');
 Route::delete('deleteClinica/{id}', 'ClinicaController@deleteClinica');
 
+Route::get('getPlanosEmClinicas/{id}', 'PlanoClinicaController@getPlanosEmClinicas');
+Route::post('createPlanosEmClinicas', 'PlanoClinicaController@createPlanosEmClinicas');
+

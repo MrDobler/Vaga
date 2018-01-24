@@ -20,7 +20,8 @@ class PlanoDeSaudeController extends Controller
     public function getPlano($id)
     {
         $plano = PlanoDeSaude::find($id);
-        return response()->json($plano);
+        $plano->logo = base64_encode($plano->logo);
+        return $plano;
     }
 
     public function createPlano(Request $req)

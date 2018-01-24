@@ -11,7 +11,7 @@ class Clinica extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'id', 'cnpj', 'nome', 'user_id'
+        'id', 'cnpj', 'nome', 'user_id', 'plano_id'
     ];
 
     public function usuario()
@@ -21,6 +21,6 @@ class Clinica extends Model
 
     public function planos()
     {
-        return $this->belongsToMany('Vaga\PlanoDeSaude', 'plano_clinica', 'id', 'id');
+        return $this->belongsToMany(PlanoDeSaude::class, 'plano_clinica');
     }
 }
