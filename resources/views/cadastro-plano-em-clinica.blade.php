@@ -4,7 +4,9 @@
         <label>Nome do Plano</label>
         <select name="plano_id">
         @foreach ($planos as $p)
-            <option value="{{$p->id}}">{{$p->nome}}</option>
+            @if ($p->status != 0)
+                <option value="{{$p->id}}">{{$p->nome}}</option>
+            @endif
         @endforeach
         </select>
     </div>

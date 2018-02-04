@@ -35,8 +35,10 @@
                         <tbody>
                             @foreach ($planos as $p)
                             <tr>
-                                @include('modal-editar-plano', $p)    
-                                <td>{{ $p->nome }}</td>
+                                <td>
+                                    @include('modal-editar-plano', $p)
+                                    {{ $p->nome }}
+                                </td>
                                 <td><img src='data:image/jpg;base64; {{ base64_decode($p->logo) }}'></td>
                                 <td>
                                     @if ($p->status === 1) 
@@ -46,7 +48,7 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#modalEditarPlano">Editar</button>
+                                    <button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#modalEditarPlano-{{$p->id}}" onclick="getPlano({{$p->id}})">Editar</button>
                                 </td>
                                 <td>
                                     <button type="button" class="btn btn-danger" onclick="deletePlano('{{$p->id}}')">Remover</button>

@@ -1,5 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Request;
+use Vaga\PlanoDeSaude;
+use Vaga\Clinica;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,5 +38,12 @@ Route::put('updateClinica/{id}', 'ClinicaController@updateClinica');
 Route::delete('deleteClinica/{id}', 'ClinicaController@deleteClinica');
 
 Route::get('getPlanosEmClinicas/{id}', 'PlanoClinicaController@getPlanosEmClinicas');
-Route::post('createPlanosEmClinicas', 'PlanoClinicaController@createPlanosEmClinicas');
+Route::post('createPlanosEmClinicas/plano/{plano_id}/clinica/{clinica_id}', 'PlanoClinicaController@createPlanosEmClinicas');
+
+Route::post('x/plano/{plano_id}/clinica/{clinica_id}', function($plano_id, $clinica_id) {
+    $plano = PlanoDeSaude::find($plano_id);
+    $clinica = Clinica::find($clinica_id);
+    
+    $plano->clinicas()->attach($clinica);
+});
 

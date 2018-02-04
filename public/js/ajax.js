@@ -1,3 +1,16 @@
+//Funções do Plano
+
+function getPlano(id) {
+    fetch('/getPlano/' + id)
+        .then((response) => {
+           response.json().then((data) => {
+                document.querySelector(`#nome-${id}`).value = data.nome;
+                document.querySelector(`#status-${id}`).value = data.status;
+            });
+        }) 
+        .catch(() => alert('Erro'));
+}
+
 function deletePlano(id) {
     let init = {
         method: 'delete'
@@ -8,8 +21,8 @@ function deletePlano(id) {
 }
 
 function createPlano() {
-    var values = document.querySelector('#create-plano');
-    var form = new FormData(values);
+    let values = document.querySelector('#create-plano');
+    let form = new FormData(values);
     fetch('/createPlano', {
         method: 'post',
         body: form
@@ -19,19 +32,25 @@ function createPlano() {
 }
 
 function updatePlano(id) {
-    var values = document.querySelector('#update-plano');
-    var form = new FormData(values);
-    fetch('/updatePlano/'+ id, {
+    let values = document.getElementById(`update-plano-${id}`);
+    let form = new FormData(values);
+    let header = new Headers();
+    header.append('Content-Type', 'application/x-www-form-urlencoded');
+    fetch(`/updatePlano/${id}`, {
         method: 'put',
-        body: form
+        headers: header,
+        body: form,
+        mode: 'no-cors'
     })
-        .then(() => window.location.reload())
+        .then(res => console.log(res))
         .catch(() => alert('Erro'));
 }
 
+//Funções da Clínica
+
 function createClinica() {
-    var values = document.querySelector('#create-clinica');
-    var form = new FormData(values);
+    let values = document.querySelector('#create-clinica');
+    let form = new FormData(values);
     fetch('/createClinica', {
         method: 'post',
         body: form
@@ -49,10 +68,14 @@ function deleteClinica(id) {
         .catch(() => alert('Erro'));
 }
 
+
+//Funções de Relacionamento Clinica x Plano
 function createPlanoClinica() {
-    var values = document.querySelector('#create-plano-clinica');
-    var form = new FormData(values);
-    fetch('/createPlanosEmClinicas', {
+    let values = document.querySelector('#create-plano-clinica');
+    let planoId = values.plano_id.value;
+    let clinicaId = values.clinica_id.value;
+    let form = new FormData(values);
+    fetch(`/createPlanosEmClinicas/plano/${planoId}/clinica/${clinicaId}`, {
         method: 'post',
         body: form
     })
@@ -61,25 +84,8 @@ function createPlanoClinica() {
 }
 
 $('#modalEditarPlano').on('show.bs.modal', function (event) {
-    var button = $(event.relatedTarget);
-    var recipient = button.data('id');
-    var modal = $(this);
+    let button = $(event.relatedTarget);
+    let recipient = button.data('id');
+    let modal = $(this);
     modal.find('#status').val(recipient);
 });
-
-function getPlano() {
-    let init = {
-        method: 'get'
-    };
-    var id = document.querySelector('#status').value;
-    fetch('/getPlano/' + id, init)
-        .then((response) => {
-           alert(response.json());
-        }) 
-        .catch(() => alert('Erro'));
-}
-
-
-function updatePlanoClinica() {
-
-}

@@ -29,9 +29,11 @@ class PlanoDeSaudeController extends Controller
         PlanoDeSaude::create($req->all());
     }
 
-    public function updatePlano(Request $req)
+    public function updatePlano(Request $req, $id)
     {
-        PlanoDeSaude::find($req->id)->update($req->all());
+        dd($req->all());
+        $x = PlanoDeSaude::where('id', $id);
+        $x->update($req->all());
     }
     
     public function deletePlano($id)

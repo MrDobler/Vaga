@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-@include('modal-editar-plano')    
+
 <div class="container">
     <div class="row">
         <div class="col-md-4">
@@ -19,40 +19,33 @@
                     <div class="container">
                     <div class="row">
                         <div class="col-md-6">
-                            <h1>Listagem de Planos de Saúde na Clínica</h1>
+                            <h3>Listagem de planos de saúde nas clínicas</h3>
+                            <h5>Usuário: {{ Auth::user()->name }}</h5>
                         </div>
                     </div>
                     </div>
                     <table class='table' id='tabela'>
                         <thead class='thead-dark'>
                             <tr>
-                                <th>Nome</th>
-                                <th>Logo</th>
-                                <th>Status</th>
-                                <th>Editar</th>
+                                <th>Clínica</th>
+                                <th>Plano</th>
                                 <th>Remover</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($planos as $p)
+                            @foreach ($p->clinicas as $c)
+                            @if ($c->user_id ==  Auth::user()->id)
                             <tr>
+                                <td>{{ $c->nome  }}</td>
+                                
                                 <td>{{ $p->nome }}</td>
-                                @php{{ $src = }} @endphp
-                                <td><img src="{{'data: image/jpg;charset=utf-8;base64,'.$p->logo}}"></td>
-                                <td>
-                                    @if ($p->status === 1) 
-                                        {{'ATIVO'}}
-                                    @else
-                                        {{'INATIVO'}}
-                                    @endif
-                                </td>
-                                <td>
-                                    <button id="btn-editar" class="btn btn-secondary" type="button" data-id="{{$p->id}}" data-toggle="modal" data-target="#modalEditarPlano">Editar</button>
-                                </td>
                                 <td>
                                     <button type="button" class="btn btn-danger" onclick="deletePlano('{{$p->id}}')">Remover</button>
                                 </td>
                             </tr>
+                            @endif
+                            @endforeach
                             @endforeach
                         </tbody>
                     </table>

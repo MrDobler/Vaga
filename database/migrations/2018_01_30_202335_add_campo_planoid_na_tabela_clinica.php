@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AlteraColunaStatusEmClinicas extends Migration
+class AddCampoPlanoidNaTabelaClinica extends Migration
 {
     /**
      * Run the migrations.
@@ -15,7 +15,7 @@ class AlteraColunaStatusEmClinicas extends Migration
     {
         Schema::table('clinicas', function(Blueprint $table)
         {
-            $table->string('status')->change();
+            $table->integer('plano_id');
         });
     }
 

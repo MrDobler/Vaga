@@ -4,20 +4,25 @@ namespace Vaga\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Vaga\PlanoDeSaude;
-use Vaga\PlanoClinica;
+use Vaga\Clinica;
 
 class PlanoClinicaController extends Controller
 {
     public function getPlanosEmClinicas($id)
     {
-        $plano = new PlanoDeSaude();
-        $result = PlanoDeSaude::find($id)->plano_clinica;
+        $plano = PlanoDeSaude::all()->where('id', $id);
+        $result = $plano->clinicas()->all();
+        var_dump($plano); exit();        
+        
 
         return response()->json($result);
     }
 
-    public function createPlanosEmClinicas(Request $req)
+    public function createPlanosEmClinicas($plano_id, $clinica_id)
     {
-        PlanoClinica::create($req->all())->plano_clinica;
+        $plano = PlanoDeSaude::find($plano_id);
+        $clinica = Clinica::find($clinica_id);
+
+        $plano->clinicas()->attach($clinica);
     }
 }

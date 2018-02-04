@@ -16,6 +16,6 @@ class PlanoDeSaude extends Model
 
     public function clinicas()
     {
-        return $this->belongsToMany(Clinica::class, 'plano_clinica');
+        return $this->belongsToMany('Vaga\Clinica', 'plano_clinica', 'plano_id', 'clinica_id');
     }
 }
