@@ -26,7 +26,19 @@ class PlanoDeSaudeController extends Controller
 
     public function createPlano(Request $req)
     {
-        PlanoDeSaude::create($req->all());
+        $dados = $req->all();
+        
+        if ($req->hasFile('logo')) {
+            $logo = $req->file('logo');
+            $num = rand(000,999);
+            $dir = "imagens/logos/";
+            $extensao = $imagem->guessClientExtension();
+            $nomeLogo = "logo_".$num.".".$extensao;
+            $logo->move($dir, $nomeLogo);
+            $dados->logo = $dir."/".$nomeLogo;
+        }
+
+        PlanoDeSaude::create($dados);
     }
 
     public function updatePlano(Request $req, $id)

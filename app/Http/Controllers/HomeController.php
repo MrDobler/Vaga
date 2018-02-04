@@ -5,7 +5,6 @@ namespace Vaga\Http\Controllers;
 use Illuminate\Http\Request;
 use Vaga\PlanoDeSaude;
 use Vaga\Clinica;
-use Vaga\User;
 
 class HomeController extends Controller
 {

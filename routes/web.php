@@ -40,10 +40,4 @@ Route::delete('deleteClinica/{id}', 'ClinicaController@deleteClinica');
 Route::get('getPlanosEmClinicas/{id}', 'PlanoClinicaController@getPlanosEmClinicas');
 Route::post('createPlanosEmClinicas/plano/{plano_id}/clinica/{clinica_id}', 'PlanoClinicaController@createPlanosEmClinicas');
 
-Route::post('x/plano/{plano_id}/clinica/{clinica_id}', function($plano_id, $clinica_id) {
-    $plano = PlanoDeSaude::find($plano_id);
-    $clinica = Clinica::find($clinica_id);
-    
-    $plano->clinicas()->attach($clinica);
-});
 

@@ -12,9 +12,7 @@ class PlanoClinicaController extends Controller
     {
         $plano = PlanoDeSaude::all()->where('id', $id);
         $result = $plano->clinicas()->all();
-        var_dump($plano); exit();        
         
-
         return response()->json($result);
     }
 

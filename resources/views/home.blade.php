@@ -34,18 +34,18 @@
                         </thead>
                         <tbody>
                             @foreach ($planos as $p)
-                            @foreach ($p->clinicas as $c)
-                            @if ($c->user_id ==  Auth::user()->id)
-                            <tr>
-                                <td>{{ $c->nome  }}</td>
-                                
-                                <td>{{ $p->nome }}</td>
-                                <td>
-                                    <button type="button" class="btn btn-danger" onclick="deletePlano('{{$p->id}}')">Remover</button>
-                                </td>
-                            </tr>
-                            @endif
-                            @endforeach
+                                @foreach ($p->clinicas as $c)
+                                    @if ($c->user_id ==  Auth::user()->id)
+                                    <tr>
+                                        <td>{{ $c->nome  }}</td>
+                                        
+                                        <td>{{ $p->nome }}</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" onclick="deletePlano('{{$p->id}}')">Remover</button>
+                                        </td>
+                                    </tr>
+                                    @endif
+                                @endforeach
                             @endforeach
                         </tbody>
                     </table>
