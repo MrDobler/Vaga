@@ -19,7 +19,6 @@ class CriacaoDaTabelaClinicas extends Migration
             $table->string('cnpj')->unique()->nullable(false);
             $table->string('nome')->unique()->nullable(false);
             $table->integer('user_id');
-            $table->integer('plano_id');
         });
     }
 

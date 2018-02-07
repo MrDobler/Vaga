@@ -1,5 +1,5 @@
 <?php
-
+ 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -13,10 +13,10 @@ class AddCampoClinicaidNaTabelaPlanodesaude extends Migration
      */
     public function up()
     {
-        Schema::table('plano_de_saude', function(Blueprint $table)
+        /*Schema::table('plano_de_saude', function(Blueprint $table)
         {
             $table->integer('clinica_id');
-        });
+        });*/
     }
 
     /**
@@ -26,6 +26,6 @@ class AddCampoClinicaidNaTabelaPlanodesaude extends Migration
      */
     public function down()
     {
-        Schema::dropColumn('clinica_id');
+        //Schema::dropColumn('clinica_id');
     }
 }

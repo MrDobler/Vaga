@@ -19,7 +19,6 @@ class CriacaoDaTabelaPlanodesaude extends Migration
             $table->string('nome')->unique()->nullable(false);
             $table->string('logo')->unique()->nullable(false);
             $table->boolean('status')->nullable(false);
-            $table->integer('clinica_id');
         });
     }
 

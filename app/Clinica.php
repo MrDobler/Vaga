@@ -11,7 +11,7 @@ class Clinica extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'id', 'cnpj', 'nome', 'user_id', 'plano_id'
+        'id', 'cnpj', 'nome', 'user_id'
     ];
 
     public function usuario()
