@@ -1,5 +1,7 @@
 <?php
 
+heaer("Access-Control-Allow-Origin: http://localhost");
+
 /**
  * Laravel - A PHP Framework For Web Artisans
  *

@@ -11,7 +11,7 @@ class PlanoDeSaude extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'id','nome', 'logo', 'status', 'clinica_id'
+        'id','nome', 'logo', 'status'
     ];
 
     public function clinicas()
