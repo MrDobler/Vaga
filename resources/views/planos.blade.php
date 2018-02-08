@@ -39,7 +39,7 @@
                                     @include('modal-editar-plano', $p)
                                     {{ $p->nome }}
                                 </td>
-                                <td><img src='data:image/jpg;base64; {{ base64_decode($p->logo) }}'></td>
+                                <td><img height="30px" width="30px" src='{{ $p->logo }}'></td>
                                 <td>
                                     @if ($p->status === 1) 
                                         {{'ATIVO'}}

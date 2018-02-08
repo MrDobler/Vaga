@@ -32,10 +32,10 @@ class PlanoDeSaudeController extends Controller
             $logo = $req->file('logo');
             $num = rand(000,999);
             $dir = "imagens/logos/";
-            $extensao = $imagem->guessClientExtension();
+            $extensao = $logo->guessClientExtension();
             $nomeLogo = "logo_".$num.".".$extensao;
             $logo->move($dir, $nomeLogo);
-            $dados->logo = $dir."/".$nomeLogo;
+            $dados['logo'] = $dir."/".$nomeLogo;
         }
 
         PlanoDeSaude::create($dados);
