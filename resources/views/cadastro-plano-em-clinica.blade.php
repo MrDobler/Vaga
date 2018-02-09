@@ -14,7 +14,9 @@
         <label>Nome da Clínica</label>
         <select name="clinica_id">
         @foreach ($clinicas as $c)
-            <option value="{{$c->id}}">{{$c->nome}}</option>
+            @if ($c->user_id == Auth::user()->id)
+                <option value="{{$c->id}}">{{$c->nome}}</option>
+            @endif
         @endforeach
         </select>
     </div>

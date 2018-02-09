@@ -40,7 +40,6 @@ function updatePlano(id) {
         method: 'put',
         headers: header,
         body: form,
-        mode: 'no-cors'
     })
         .then(res => console.log(res))
         .catch(() => alert('Erro'));

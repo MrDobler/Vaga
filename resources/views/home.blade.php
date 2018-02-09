@@ -35,7 +35,7 @@
                         <tbody>
                             @foreach ($planos as $p)
                                 @foreach ($p->clinicas as $c)
-                                    @if ($c->user_id ==  Auth::user()->id)
+                                    @if ($c->user_id == Auth::user()->id)
                                     <tr>
                                         <td>{{ $c->nome  }}</td>
                                         

@@ -31,16 +31,18 @@
                         </thead>
                         <tbody>
                             @foreach ($clinicas as $c)
-                            <tr>    
-                                <td>{{ $c->cnpj }}</td>
-                                <td>{{ $c->nome }}</td>
-                                <td>
-                                    <button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#modalEditarPlano">Editar</button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger" onclick="deleteClinica('{{$c->id}}')">Remover</button>
-                                </td>
-                            </tr>
+                                @if ($c->user_id == Auth::user()->id)
+                                    <tr>    
+                                        <td>{{ $c->cnpj }}</td>
+                                        <td>{{ $c->nome }}</td>
+                                        <td>
+                                            <button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#modalEditarPlano">Editar</button>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" onclick="deleteClinica('{{$c->id}}')">Remover</button>
+                                        </td>
+                                    </tr>
+                                @endif
                             @endforeach
                         </tbody>
                     </table>
