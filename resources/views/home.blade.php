@@ -37,8 +37,7 @@
                                 @foreach ($p->clinicas as $c)
                                     @if ($c->user_id ==  Auth::user()->id)
                                     <tr>
-                                        <td>{{ $c->nome  }}</td>
-                                        
+                                        <td>{{ $c->nome }}</td>
                                         <td>{{ $p->nome }}</td>
                                         <td>
                                             <button type="button" class="btn btn-danger" onclick="deletePlanoEmClinica({{$p->id}}, {{$c->id}})">Remover</button>

@@ -7,20 +7,15 @@ use Vaga\PlanoDeSaude;
 
 class PlanoDeSaudeController extends Controller
 {
-    public function getAll()
+    public function getAllPlanos()
     {
         $plano = PlanoDeSaude::all();
-        foreach ($plano as $p) {
-            $p['logo'] = base64_encode($p['logo']);
-        }
-
         return response()->json($plano);
     }
 
     public function getPlano($id)
     {
         $plano = PlanoDeSaude::find($id);
-        $plano->logo = base64_encode($plano->logo);
         return $plano;
     }
 

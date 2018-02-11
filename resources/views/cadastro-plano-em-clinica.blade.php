@@ -23,13 +23,4 @@
     <div class="modal-footer">
         <button class="btn btn-primary" onclick="createPlanoClinica()" type="button">Cadastrar</button>
     </div>
-    @if(count($errors) > 0)
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $errors)
-            <li>{{$errors}}</li>
-            @endforeach 
-        </ul>
-    </div>
-    @endif  
 </form>

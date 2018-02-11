@@ -7,17 +7,17 @@ use Vaga\Clinica;
 
 class ClinicaController extends Controller
 {
-    public function getAll()
+    public function getAllClinicas()
     {
         $clinica = Clinica::all();
 
-        return response()->json($clinica);
+        return $clinica;
     }
 
     public function getClinica($id)
     {
-        $clinica = Clinica::where('id', $id)->get();
-        return response()->json($clinica);
+        $clinica = Clinica::find($id);
+        return $clinica;
     }
 
     public function createClinica(Request $req)

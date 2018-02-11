@@ -25,16 +25,16 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/planos', 'HomeController@planos')->name('planos');
 Route::get('/clinicas', 'HomeController@clinicas')->name('clinicas');
 
-Route::get('getAll', 'PlanoDeSaudeController@getAll');
+Route::get('getAllPlanos', 'PlanoDeSaudeController@getAllPlanos');
 Route::get('getPlano/{id}', 'PlanoDeSaudeController@getPlano');
 Route::post('createPlano', 'PlanoDeSaudeController@createPlano');
 Route::post('updatePlano/{id}', 'PlanoDeSaudeController@updatePlano');
 Route::delete('deletePlano/{id}', 'PlanoDeSaudeController@deletePlano');
 
-Route::get('getAllClinicas', 'ClinicaController@getAll');
+Route::get('getAllClinicas', 'ClinicaController@getAllClinicas');
 Route::get('getClinica/{id}', 'ClinicaController@getClinica');
 Route::post('createClinica', 'ClinicaController@createClinica');
-Route::put('updateClinica/{id}', 'ClinicaController@updateClinica');
+Route::post('updateClinica/{id}', 'ClinicaController@updateClinica');
 Route::delete('deleteClinica/{id}', 'ClinicaController@deleteClinica');
 
 Route::get('getPlanosEmClinicas/{id}', 'PlanoClinicaController@getPlanosEmClinicas');

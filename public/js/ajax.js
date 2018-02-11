@@ -45,6 +45,18 @@ function updatePlano(id) {
 
 //Funções da Clínica
 
+function getClinica(id) {
+    fetch('/getClinica/' + id)
+        .then((response) => {
+           response.json().then((data) => {
+                document.querySelector(`#cnpj-${id}`).value = data.cnpj;
+                document.querySelector(`#nome-${id}`).value = data.nome;
+            });
+        }) 
+        .catch(() => alert('Erro'));
+}
+
+
 function createClinica() {
     let values = document.querySelector('#create-clinica');
     let form = new FormData(values);
@@ -65,6 +77,17 @@ function deleteClinica(id) {
         .catch(() => alert('Erro'));
 }
 
+function updateClinica(id) {
+    let values = document.getElementById(`update-clinica-${id}`);
+    let form = new FormData(values);
+    let header = new Headers();
+    fetch(`/updateClinica/${id}`, {
+        method: 'post',
+        body: form
+    })
+        .then(() => window.location.reload())
+        .catch(() => alert('Erro'));
+}
 
 //Funções de Relacionamento Clinica x Plano
 function createPlanoClinica() {
