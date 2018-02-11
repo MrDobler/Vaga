@@ -1,5 +1,5 @@
-//Funções do Plano
 
+//Funções do Plano
 function getPlano(id) {
     fetch('/getPlano/' + id)
         .then((response) => {
@@ -44,7 +44,6 @@ function updatePlano(id) {
 }
 
 //Funções da Clínica
-
 function getClinica(id) {
     fetch('/getClinica/' + id)
         .then((response) => {
