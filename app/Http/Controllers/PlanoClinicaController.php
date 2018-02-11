@@ -16,11 +16,19 @@ class PlanoClinicaController extends Controller
         return response()->json($result);
     }
 
-    public function createPlanosEmClinicas($plano_id, $clinica_id)
+    public function createPlanosEmClinicas($planoId, $clinicaId)
     {
-        $plano = PlanoDeSaude::find($plano_id);
-        $clinica = Clinica::find($clinica_id);
+        $plano = PlanoDeSaude::find($planoId);
+        $clinica = Clinica::find($clinicaId);
 
         $plano->clinicas()->attach($clinica);
+    }
+
+    public function deletePlanosEmClinicas($planoId, $clinicaId)
+    {
+        $plano = PlanoDeSaude::find($planoId);
+        $clinica = Clinica::find($clinicaId);
+        
+        $plano->clinicas()->detach();
     }
 }

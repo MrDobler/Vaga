@@ -35,13 +35,11 @@ function updatePlano(id) {
     let values = document.getElementById(`update-plano-${id}`);
     let form = new FormData(values);
     let header = new Headers();
-    header.append('Content-Type', 'application/x-www-form-urlencoded');
     fetch(`/updatePlano/${id}`, {
-        method: 'put',
-        headers: header,
-        body: form,
+        method: 'post',
+        body: form
     })
-        .then(res => console.log(res))
+        .then(() => window.location.reload())
         .catch(() => alert('Erro'));
 }
 
@@ -88,3 +86,12 @@ $('#modalEditarPlano').on('show.bs.modal', function (event) {
     let modal = $(this);
     modal.find('#status').val(recipient);
 });
+
+function deletePlanoEmClinica(planoId, clinicaId) {
+    let init = {
+        method: 'delete'
+    };
+    fetch(`/deletePlanosEmClinicas/plano/${planoId}/clinica/${clinicaId}`, init)
+        .then(() => window.location.reload())
+        .catch(() => alert('Erro'));
+}

@@ -28,7 +28,7 @@ Route::get('/clinicas', 'HomeController@clinicas')->name('clinicas');
 Route::get('getAll', 'PlanoDeSaudeController@getAll');
 Route::get('getPlano/{id}', 'PlanoDeSaudeController@getPlano');
 Route::post('createPlano', 'PlanoDeSaudeController@createPlano');
-Route::put('updatePlano/{id}', 'PlanoDeSaudeController@updatePlano');
+Route::post('updatePlano/{id}', 'PlanoDeSaudeController@updatePlano');
 Route::delete('deletePlano/{id}', 'PlanoDeSaudeController@deletePlano');
 
 Route::get('getAllClinicas', 'ClinicaController@getAll');
@@ -39,5 +39,6 @@ Route::delete('deleteClinica/{id}', 'ClinicaController@deleteClinica');
 
 Route::get('getPlanosEmClinicas/{id}', 'PlanoClinicaController@getPlanosEmClinicas');
 Route::post('createPlanosEmClinicas/plano/{plano_id}/clinica/{clinica_id}', 'PlanoClinicaController@createPlanosEmClinicas');
+Route::delete('deletePlanosEmClinicas/plano/{plano_id}/clinica/{clinica_id}', 'PlanoClinicaController@deletePlanosEmClinicas');
 
 
