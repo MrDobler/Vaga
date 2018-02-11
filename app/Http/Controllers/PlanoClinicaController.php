@@ -27,7 +27,6 @@ class PlanoClinicaController extends Controller
     public function deletePlanosEmClinicas($planoId, $clinicaId)
     {
         $plano = PlanoDeSaude::find($planoId);
-        $clinica = Clinica::find($clinicaId);
         
         $plano->clinicas()->detach($clinicaId);
     }
