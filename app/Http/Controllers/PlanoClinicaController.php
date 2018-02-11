@@ -29,6 +29,6 @@ class PlanoClinicaController extends Controller
         $plano = PlanoDeSaude::find($planoId);
         $clinica = Clinica::find($clinicaId);
         
-        $plano->clinicas()->detach();
+        $plano->clinicas()->detach($clinicaId);
     }
 }

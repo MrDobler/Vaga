@@ -4,6 +4,7 @@ namespace Vaga\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Vaga\PlanoDeSaude;
+use Validator;
 
 class PlanoDeSaudeController extends Controller
 {
@@ -22,7 +23,7 @@ class PlanoDeSaudeController extends Controller
     public function createPlano(Request $req)
     {
         $dados = $req->all();
-        
+
         if ($req->hasFile('logo')) {
             $logo = $req->file('logo');
             $num = rand(000,999);
