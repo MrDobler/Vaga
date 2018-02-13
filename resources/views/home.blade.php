@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="panel panel-default tamanho">
-                <div class="panel-heading">Adicionar Plano</div>
+                <div class="panel-heading">Adicionar Plano em Clínica</div>
                 <div class="panel-body">
                     @include('cadastro-plano-em-clinica')
                 </div>
@@ -35,7 +35,6 @@
                         <tbody>
                             @foreach ($planos as $p)
                                 @foreach ($p->clinicas as $c)
-                                    @if ($c->user_id ==  Auth::user()->id)
                                     <tr>
                                         <td>{{ $c->nome }}</td>
                                         <td>{{ $p->nome }}</td>
@@ -43,7 +42,6 @@
                                             <button type="button" class="btn btn-danger" onclick="deletePlanoEmClinica({{$p->id}}, {{$c->id}})">Remover</button>
                                         </td>
                                     </tr>
-                                    @endif
                                 @endforeach
                             @endforeach
                         </tbody>

@@ -5,6 +5,7 @@ namespace Vaga\Http\Controllers;
 use Illuminate\Http\Request;
 use Vaga\PlanoDeSaude;
 use Vaga\Clinica;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -26,7 +27,8 @@ class HomeController extends Controller
     public function index()
     {  
         $planos = PlanoDeSaude::all();
-        $clinicas = Clinica::all();
+        $userId = Auth::user()->id;
+        $clinicas = Clinica::where('user_id', $userId)->get();
         return view('home')
                 ->with('planos', $planos)
                 ->with('clinicas', $clinicas);
@@ -40,7 +42,8 @@ class HomeController extends Controller
 
     public function clinicas()
     {
-        $clinicas = Clinica::all();
+        $userId = Auth::user()->id;
+        $clinicas = Clinica::where('user_id', $userId)->get();
         return view('clinicas')->with('clinicas', $clinicas);
     }
 }

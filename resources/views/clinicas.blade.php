@@ -31,21 +31,19 @@
                         </thead>
                         <tbody>
                             @foreach ($clinicas as $c)
-                                @if ($c->user_id == Auth::user()->id)
-                                    <tr>
-                                        <td>
-                                            @include('modal-editar-clinica', $c)
-                                            {{ $c->cnpj }}
-                                        </td>
-                                        <td>{{ $c->nome }}</td>
-                                        <td>
-                                            <button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#modalEditarClinica-{{$c->id}}" onclick="getClinica({{$c->id}})">Editar</button>
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn btn-danger" onclick="deleteClinica('{{$c->id}}')">Remover</button>
-                                        </td>
-                                    </tr>
-                                @endif
+                                <tr>
+                                    <td>
+                                        @include('modal-editar-clinica', $c)
+                                        {{ $c->cnpj }}
+                                    </td>
+                                    <td>{{ $c->nome }}</td>
+                                    <td>
+                                        <button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#modalEditarClinica-{{$c->id}}" onclick="getClinica({{$c->id}})">Editar</button>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger" onclick="deleteClinica('{{$c->id}}')">Remover</button>
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>

@@ -10,7 +10,6 @@ class ClinicaController extends Controller
     public function getAllClinicas()
     {
         $clinica = Clinica::all();
-
         return $clinica;
     }
 
