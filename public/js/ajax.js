@@ -89,6 +89,18 @@ function updateClinica(id) {
 }
 
 //Funções de Relacionamento Clinica x Plano
+function getPlanosEmClinicas(id) {
+    fetch('/getPlanosEmClinicas/'+ id)
+        .then((response) => {
+            response.json().then((data) => {
+                return data.pivot;
+            });
+        }) 
+        .catch(() => alert('Erro'));
+}
+
+
+
 function createPlanoClinica() {
     let values = document.querySelector('#create-plano-clinica');
     let planoId = values.plano_id.value;
@@ -102,12 +114,13 @@ function createPlanoClinica() {
         .catch(() => alert('Erro'));
 }
 
-$('#modalEditarPlano').on('show.bs.modal', function (event) {
-    let button = $(event.relatedTarget);
-    let recipient = button.data('id');
-    let modal = $(this);
-    modal.find('#status').val(recipient);
-});
+//jQuery que passa os dados para a modal
+// $('#modalEditarPlano').on('show.bs.modal', function (event) {
+//     let button = $(event.relatedTarget);
+//     let recipient = button.data('id');
+//     let modal = $(this);
+//     modal.find('#status').val(recipient);
+// });
 
 function deletePlanoEmClinica(planoId, clinicaId) {
     let init = {

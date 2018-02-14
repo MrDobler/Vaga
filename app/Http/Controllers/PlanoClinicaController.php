@@ -10,11 +10,13 @@ class PlanoClinicaController extends Controller
 {
     public function getPlanosEmClinicas($id)
     {
-        $plano = PlanoDeSaude::where('id', $id)->get();
-        $planoXClinica = $plano->clinicas()->id;
-        $result = $planoXClinica->all();
+        $plano = PlanoDeSaude::find($id);
         
-        return response()->json($result);
+        foreach ($plano->clinicas as $c) {
+            $listaPlanosEmClinicas = $c;
+        }
+
+        return response()->json($listaPlanosEmClinicas);
     }
 
     public function createPlanosEmClinicas($planoId, $clinicaId)
