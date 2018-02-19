@@ -17,7 +17,7 @@ class CriacaoDaTabelaPlanodesaude extends Migration
         {
             $table->increments('id');
             $table->string('nome')->unique()->nullable(false);
-            $table->string('logo')->unique()->nullable(false);
+            $table->string('logo')->nullable(false);
             $table->boolean('status')->nullable(false);
         });
     }

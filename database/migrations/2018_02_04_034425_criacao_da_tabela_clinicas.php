@@ -17,8 +17,9 @@ class CriacaoDaTabelaClinicas extends Migration
         {
             $table->increments('id');
             $table->string('cnpj')->unique()->nullable(false);
-            $table->string('nome')->unique()->nullable(false);
-            $table->integer('user_id');
+            $table->string('nome')->nullable(false);
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

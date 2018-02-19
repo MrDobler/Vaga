@@ -10,27 +10,41 @@ class PlanoClinicaController extends Controller
 {
     public function getPlanosEmClinicas($id)
     {
-        $plano = PlanoDeSaude::find($id);
-        
-        foreach ($plano->clinicas as $c) {
-            $listaPlanosEmClinicas = $c;
+        try {
+            $plano = PlanoDeSaude::find($id);
+            
+            foreach ($plano->clinicas as $c) {
+                $listaPlanosEmClinicas = $c;
+            }
+    
+            return response()->json($listaPlanosEmClinicas);
+        } catch(\Exception $e) {
+            throw new \Exception('Bad Request - 400', 400);
         }
-
-        return response()->json($listaPlanosEmClinicas);
     }
 
     public function createPlanosEmClinicas($planoId, $clinicaId)
     {
-        $plano = PlanoDeSaude::find($planoId);
-        $clinica = Clinica::find($clinicaId);
+        try {
+            $plano = PlanoDeSaude::find($planoId);
+            $clinica = Clinica::find($clinicaId);
+            $plano->clinicas()->attach($clinica);
 
-        $plano->clinicas()->attach($clinica);
+            return response()->json(201);
+        } catch(\Exception $e) {
+            throw new \Exception('Error: 500 - Internal Server Error', 500); 
+        }
     }
 
     public function deletePlanosEmClinicas($planoId, $clinicaId)
     {
-        $plano = PlanoDeSaude::find($planoId);
-        
-        $plano->clinicas()->detach($clinicaId);
+        try {
+            $plano = PlanoDeSaude::find($planoId);
+            $plano->clinicas()->detach($clinicaId);
+
+            return response()->json(200);
+        } catch(\Exception $e) {
+            throw new \Exception('Error: 500 - Internal Server Error', 500); 
+        }
     }
 }

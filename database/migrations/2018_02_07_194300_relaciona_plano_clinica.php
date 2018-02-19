@@ -13,7 +13,8 @@ class RelacionaPlanoClinica extends Migration
      */
     public function up()
     {
-        Schema::create('plano_clinica', function (Blueprint $table) {
+        Schema::create('plano_clinica', function (Blueprint $table) 
+        {
             $table->increments('id');
             $table->integer('plano_id')->unsigned();
             $table->foreign('plano_id')->references('id')->on('plano_de_saude');

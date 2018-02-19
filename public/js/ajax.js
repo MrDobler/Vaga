@@ -99,8 +99,6 @@ function getPlanosEmClinicas(id) {
         .catch(() => alert('Erro'));
 }
 
-
-
 function createPlanoClinica() {
     let values = document.querySelector('#create-plano-clinica');
     let planoId = values.plano_id.value;
@@ -113,14 +111,6 @@ function createPlanoClinica() {
         .then(() => window.location.reload())
         .catch(() => alert('Erro'));
 }
-
-//jQuery que passa os dados para a modal
-// $('#modalEditarPlano').on('show.bs.modal', function (event) {
-//     let button = $(event.relatedTarget);
-//     let recipient = button.data('id');
-//     let modal = $(this);
-//     modal.find('#status').val(recipient);
-// });
 
 function deletePlanoEmClinica(planoId, clinicaId) {
     let init = {
